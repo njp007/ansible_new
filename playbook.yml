@@ -14,7 +14,7 @@
   - name: trying handlers
     yum:
       name: telnet
-      state: removed
+      state: present
     notify: telnet user
 
   handlers:
