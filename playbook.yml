@@ -6,7 +6,7 @@
 
   vars:
     default_name: "sagar"
-    sample_name: "sagar"
+    sample_name: "salmman"
   roles:
   - httpd_uninstall
   - httpd_install
