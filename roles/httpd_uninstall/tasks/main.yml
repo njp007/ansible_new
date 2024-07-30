@@ -1,0 +1,10 @@
+- name: install httpd service
+  yum:
+    name: httpd
+    state: absent
+
+- name: creating a log file to indicate the output
+  shell: echo "the httpd is uninstalled successfully"
+  register: output1
+
+- debug: "var=output1.stdout_lines"

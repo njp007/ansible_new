@@ -1,0 +1,23 @@
+---
+- name: learning ansible
+  hosts: target
+  gather_facts: yes
+  become: yes
+
+  vars:
+    default_name: "sagar"
+    sample_name: "sagar"
+  roles:
+  - httpd_uninstall
+  - httpd_install
+  tasks:
+  - name: trying handlers
+    yum:
+      name: telnet
+      state: removed
+    notify: telnet user
+
+  handlers:
+  - name: telnet user
+    debug:
+      msg: "the {{ sample_name }} user install telnet "

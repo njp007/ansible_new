@@ -1,0 +1,30 @@
+---
+- hosts: target
+  gather_facts: no
+  force_handlers: yes
+  tasks:
+  - name: check if tomcat is available
+    command: "ls /usr/local/tomcat7"
+    register: tomcat7_out
+    notify:
+      - tomcat7
+  
+  - block:
+    - name: check if tomcat8 is there
+      command: "ls /usr/local/tomcat8"
+      register: tomcat8_out
+
+
+    rescue:
+    - debug:
+        msg: "the path /usr/local/tomcat8 does not exist"
+
+  
+  handlers:
+    - name: tomcat7
+      debug:
+        msg: "this is tomcat 7"
+
+    - name: tomcat8
+      debug:
+        msg: "this is tomcat 8"

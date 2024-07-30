@@ -1,0 +1,16 @@
+- name: install httpd service
+  yum:
+    name: httpd
+    state: installed
+
+- name: runn and enable the service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: try using template from template path
+  template:
+    src: sample.txt.j2
+    dest: /home/npimpalkhute/learn-ansible/test_sample.txt
+    mode: 0755
